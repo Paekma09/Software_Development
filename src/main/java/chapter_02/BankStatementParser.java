@@ -1,2 +1,8 @@
-package main.java.chapter_02;public interface BankStatementParser {
+package main.java.chapter_02;
+
+import java.util.List;
+
+public interface BankStatementParser {
+    BankTransaction parseFrom(String line);
+    List<BankTransaction> parseLinesFrom(List<String> lines);
 }
