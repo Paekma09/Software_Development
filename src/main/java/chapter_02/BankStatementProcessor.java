@@ -21,13 +21,13 @@ public class BankStatementProcessor {
         return result;
     }
 
-//    public double calculateTotalAmount() {
-//        double total = 0;
-//        for (final BankTransaction bankTransaction : bankTransactions) {
-//            total += bankTransaction.getAmount();
-//        }
-//        return total;
-//    }
+    public double calculateTotalAmount() {
+        double total = 0;
+        for (final BankTransaction bankTransaction : bankTransactions) {
+            total += bankTransaction.getAmount();
+        }
+        return total;
+    }
 
 //    public double calculateTotalInMonth(final Month month) {
 //        double total = 0;
@@ -43,15 +43,15 @@ public class BankStatementProcessor {
         return summarizeTransactions((acc, bankTransaction) -> bankTransaction.getDate().getMonth() == month ? acc + bankTransaction.getAmount() : acc);
     }
 
-//    public double calculateTotalForCategory(final String category) {
-//        double total = 0;
-//        for (final BankTransaction bankTransaction : bankTransactions) {
-//            if (bankTransaction.getDescription().equals(category)) {
-//                total += bankTransaction.getAmount();
-//            }
-//        }
-//        return total;
-//    }
+    public double calculateTotalForCategory(final String category) {
+        double total = 0;
+        for (final BankTransaction bankTransaction : bankTransactions) {
+            if (bankTransaction.getDescription().equals(category)) {
+                total += bankTransaction.getAmount();
+            }
+        }
+        return total;
+    }
 
     // 특정 금액 이상의 은해 거래 내역 찾기
 //    public List<BankTransaction> findTransactionsGreaterThanEqual(final int amount) {
