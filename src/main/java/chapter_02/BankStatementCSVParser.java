@@ -32,6 +32,17 @@ public class BankStatementCSVParser implements BankStatementParser{
     public BankTransaction parseFrom(String line) {
         final String[] columns = line.split(",");
 
+
+        //문법 예외 던지기
+//        if (columns.length < EXPECTED_ATTRIBUTES_LENGTH) {
+//            throw new CSVSyntaxException();
+//        }
+
+        //예외흫 던지는 대신 null 반환하기
+//        if (columns.length < EXPECTED_ATTRIBUTES_LENGTH) {
+//            return null;
+//        }
+
         final LocalDate date = LocalDate.parse(columns[0], DATE_PATTERN);
         final double amount = Double.parseDouble(columns[1]);
         final String description = columns[2];
