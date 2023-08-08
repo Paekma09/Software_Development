@@ -12,7 +12,7 @@ public class Twootr {
         return null;
     }
 
-    public Optional<SenderEndPoint> onFollow(String userId) {
+    public Optional<SenderEndPoint> onFollow(User user, String userId) {
         return null;
     }
 

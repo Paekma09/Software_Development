@@ -68,7 +68,31 @@ public class TwootrTest {
 
     @Test
     public void shouldReceiveTwootsFromFollowedUser() {
+        final String id = "1";
 
+        logon();
+
+        endPoint.onFollow(TestData.OTHER_USER_ID);
+
+        final SenderEndPoint otherEndPoint = otherLogon();
+        otherEndPoint.onSendTwoot(id, TWOOT);
+
+        verify(twootRepository).add(id, TestData.OTHER_USER_ID, TWOOT);
+        verify(receiverEndPoint).onTwoot(new Twoot(id, TestData.OTHER_USER_ID, TWOOT, new Position(0)));
+    }
+
+    @Test
+    public void shouldReceiveeReplayOfTwootsAfterLogoff() {
+        final String id = "1";
+
+        userFollowsOtherUser();
+
+        final SenderEndPoint otherEndPoint = otherLogon();
+        otherEndPoint.onSendTwoot(id, TWOOT);
+
+        logon();
+
+        verify(receiverEndPoint).onTwoot(twootAt(id, POSITION_1));
     }
 
     private void logon() {
